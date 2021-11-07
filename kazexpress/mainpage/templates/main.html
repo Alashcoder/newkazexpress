@@ -1,15 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>KazExpress</title>
 		<meta charset="UTF-8">
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link  rel="stylesheet" href="bootstrap-5.1.1-dist/css/bootstrap.css">
-		<script src="bootstrap-5.1.1-dist/js/bootstrap.js"></script>
-		<link rel="stylesheet" href="style.css">
+		<link  rel="stylesheet" href="{% static 'bootstrap-5.1.1-dist/css/bootstrap.css' %}">
+		<script src="{% static 'bootstrap-5.1.1-dist/js/bootstrap.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 		<script src="https://kit.fontawesome.com/1f582dee7a.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="product.css">
-		<script src="javascript.js"></script>
+		<link rel="stylesheet" href="{% static 'cssproduct.css' %}">
+		<script src="{% static 'javascript.js' %}"></script>
 
 	</head>
 	<body>
