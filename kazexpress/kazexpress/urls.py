@@ -16,9 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mainpage.views import *
+from django.urls import reverse
+from django.contrib import admin
+from django.urls import path, include
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index)
+    path('', index, name='homepage'),
+    path('store', store, name='store'),
+    path('product/<int:id>',product_page,name='product_page'),
+    path('signup', Signup.as_view(), name='signup'),
+    path('login', Login.as_view(), name='login'),
+    path('logout', logout, name='logout'),
+ #   path('cart', auth_middleware(Cart.as_view()), name='cart'),
+    path('check-out', CheckOut.as_view(), name='checkout'),
+   # path('orders', auth_middleware(OrderView.as_view()), name='orders'),
+    
  
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = '/home/whiterose/programing/python/django/kazexpress'
+BASE_DIR = '/home/cat/programing/python/django/kazexpress'
 
 
 
@@ -118,7 +118,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static"),
-   '/home/whiterose/programing/python/django/kazexpress/static',
+   '/home/cat/programing/python/django/kazexpress/kazexpress/static',
 ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

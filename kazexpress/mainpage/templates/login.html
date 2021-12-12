@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,9 +7,9 @@
 		<script src="https://kit.fontawesome.com/1f582dee7a.js" crossorigin="anonymous"></script>
 
 
-		<link rel="stylesheet" href="bootstrap-5.1.1-dist/css/bootstrap.css">
+		<link rel="stylesheet" href="{% static 'bootstrap-5.1.1-dist/css/bootstrap.css' %}">
 		<script src="bootstrap-5.1.1-dist/js/bootstrap.js"></script>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="{%style.css% }">
 		<script src="javascript.js"></script>
 	</head>
 	<body>
