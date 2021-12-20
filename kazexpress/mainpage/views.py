@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product
 from django.urls import reverse
+from .forms import *
 from django.views.generic import DetailView
 products = Product.objects.all()
 def index(request):
@@ -32,6 +33,8 @@ class Login(View):
         error_message = None
         if customer:
             flag = check_password(password, customer.password)
+            if password==customer.password:
+                flag=True
             if flag:
                 request.session['customer'] = customer.id
   
@@ -41,9 +44,9 @@ class Login(View):
                     Login.return_url = None
                     return redirect('homepage')
             else:
-                error_message = 'Invalid !!'
+                error_message = 'Invalid 1!!'
         else:
-            error_message = 'Invalid !!'
+            error_message = 'Invalid 2!!'
   
         print(email, password)
         return render(request, 'login.html', {'error': error_message})
@@ -106,8 +109,8 @@ def store(request):
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password
 from django.views import View
-def product_page(request):
-    return render(request,"product_page.html",{'products':products})
+# def product_page(request):
+#     return render(request,"product_page.html",{'products':products})
   
 class Signup (View):
     def get(self, request):
@@ -199,3 +202,15 @@ class OrderView(View):
         orders = Order.get_orders_by_customer(customer)
         print(orders)
         return render(request, 'orders.html', {'orders': orders})
+def about_us(request):
+    return render(request,"contact_us.html")
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product_page.html'
+    context_object_name = 'product'
+def search(request):
+    search=Search(request.POST)
+    query="SELECT * FROM mainpage_product WHERE titleb LIKE '%"+str(search)+"'"
+    search4=query=Product.objects.raw(query)
+    return render(request,'search.html',{'search4':search4})
+    

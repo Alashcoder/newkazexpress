@@ -26,13 +26,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='homepage'),
+    path('about_us',about_us,name='about'),
     path('store', store, name='store'),
-    path('product/<int:id>',product_page,name='product_page'),
+    path('search',search,name='search'),
+    # path('product/<int:id>',product_page,name='product_page'),
     path('signup', Signup.as_view(), name='signup'),
     path('login', Login.as_view(), name='login'),
     path('logout', logout, name='logout'),
  #   path('cart', auth_middleware(Cart.as_view()), name='cart'),
     path('check-out', CheckOut.as_view(), name='checkout'),
+    path('product/<int:pk>',ProductDetailView.as_view(),name='product-detail')
    # path('orders', auth_middleware(OrderView.as_view()), name='orders'),
     
  
