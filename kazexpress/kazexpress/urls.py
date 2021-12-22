@@ -29,6 +29,7 @@ urlpatterns = [
     path('about_us',about_us,name='about'),
     path('store', store, name='store'),
     path('search',search,name='search'),
+    path('cart', include('cart.urls', namespace='cart')),
     # path('product/<int:id>',product_page,name='product_page'),
     path('signup', Signup.as_view(), name='signup'),
     path('login', Login.as_view(), name='login'),

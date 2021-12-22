@@ -24,11 +24,11 @@
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				  </form></div>
-			 <div style="margin-right: 20px;"><a href="busket.html"><i class="fas fa-shopping-basket " style="font-size: 50px;"></i></a></div>
+			 <div style="margin-right: 20px;"><a href="{% url 'cart:cart_detail'%}"><i class="fas fa-shopping-basket " style="font-size: 50px;"></i></a></div>
 			
 			 <div><a href="{% url 'login' %}"><button>login/sign in</button></a></div>
 			
-			 <div><a href="{% url 'logout'%}?next={{request.path}}"><button>logout</button></a></div>
+			
 			
 			  </div></header>
 		<div class="grand">
@@ -92,19 +92,21 @@
 </div></div></div>
 
 		</div>
-		<div clas="main container-fluid">
+		<div class="main container-fluid col-md-10">
 			<script> var count=0;</script>
 			<ul class="list-unstyled">
 				<li>
 			<div class="card_bar col-xs-12 col-sm-6 col-md-12 c">
 				{% for i in products %}
-				<div class="card " style="margin: 1%;">
+				<div class="card col-md-3 " style="margin: 1%;">
 		
 					<img src="{{ i.photo_prod.url }}" alt="Turan 5L" style="width:100%">
 					<a href="{% url 'product-detail' pk=i.pk %}">   <h1>{{i.title }}<h1></a>
 					<p>price {{i.price}}<p>
-					<p><button onclick="alert('товар в корзине')">Добавить в корзину
-					</button></p><script> count++;</script>
+					<form action="{%url 'cart:cart_add' product_id=i.pk  %}" style="float:bottom;">
+						<button type="submit" onclick="alert('товар в корзине')">Добавить в корзину</button>
+					</form>
+					<script> count++;</script>
 				
 				</div> 	<script>if(count==4){
 					var b=document.createElement('br');

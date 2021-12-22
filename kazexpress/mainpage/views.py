@@ -210,7 +210,9 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
 def search(request):
     search=Search(request.POST)
-    query="SELECT * FROM mainpage_product WHERE titleb LIKE '%"+str(search)+"'"
-    search4=query=Product.objects.raw(query)
-    return render(request,'search.html',{'search4':search4})
+    if search.is_valid():
+        search4=search.cleaned_data.get('search')
+        query="SELECT * FROM mainpage_product WHERE titleb LIKE '%"+str(search)+"'"
+        search=Product.objects.filter(title=search4)
+    return render(request,'search.html',{'search':search})
     

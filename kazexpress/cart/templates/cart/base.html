@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>KazExpress</title>
+		  <title> КОрзина</title>
 		<meta charset="UTF-8">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -94,26 +94,8 @@
 		</div>
 		<div clas="main container-fluid">
 			<script> var count=0;</script>
-			<ul class="list-unstyled">
-				<li>
-			<div class="card_bar col-xs-12 col-sm-6 col-md-12 c">
-				{% for i in search %}
-				<div class="card " style="margin: 1%;">
-		
-					<img src="{{ i.photo_prod.url }}" alt="Turan 5L" style="width:100%">
-					<a href="{% url 'product-detail' pk=i.pk %}">   <h1>{{i.title }}<h1></a>
-					<p>price {{i.price}}<p>
-					<p><button onclick="alert('товар в корзине')">Добавить в корзину
-					</button></p><script> count++;</script>
-				
-				</div> 	<script>
- </script> {% endfor  %}  
-			</div>></li></ul>
-
-		
-
-
-
+	            {% block content %}
+	            {% endblock %}
 		</div></div>
 		<footer class="row row-cols-5 py-5 my-5 border-top">
 			<div class="col">
